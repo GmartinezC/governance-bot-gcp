@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2026-05-08" version="21.0.0" type="device">
+  <diagram id="gcp-dg-bot" name="Bot Gobierno de Datos GCP">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1"
+                  connect="1" arrows="1" fold="1" page="1" pageScale="1"
+                  pageWidth="2000" pageHeight="1050" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t0" value="Bot Autónomo de Gobierno de Datos en GCP — Arquitectura Agentic Harness" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="80" y="10" width="1820" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="gT" value="🔔  Triggers" style="swimlane;startSize=26;fillColor=#e8f5e9;strokeColor=#2e7d32;fontColor=#1b5e20;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="150" y="75" width="720" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="sc" value="Cloud&#xa;Scheduler" style="shape=mxgraph.gcp2.cloud_scheduler;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gT">
+          <mxGeometry x="50" y="32" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ev" value="Eventarc" style="shape=mxgraph.gcp2.eventarc;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gT">
+          <mxGeometry x="300" y="32" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="ag" value="API Gateway&#xa;(Manual)" style="shape=mxgraph.gcp2.cloud_endpoints;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gT">
+          <mxGeometry x="570" y="32" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gH" value="🧠  Agentic Harness — Cloud Run Jobs" style="swimlane;startSize=26;fillColor=#e3f2fd;strokeColor=#1565c0;fontColor=#0d47a1;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="100" y="245" width="850" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="pl" value="Planner&#xa;(Gemini 1.5 Pro)" style="shape=mxgraph.gcp2.vertex_ai;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="50" y="55" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ex" value="Executor&#xa;(Loop ReAct)" style="shape=mxgraph.gcp2.cloud_run;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="240" y="55" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mm" value="Memory Mgr&#xa;(Short-term)" style="shape=mxgraph.gcp2.cloud_memorystore;fillColor=#FBBC04;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="430" y="55" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="st" value="State Store&#xa;(Firestore)" style="shape=mxgraph.gcp2.cloud_firestore;fillColor=#FBBC04;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="620" y="55" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="tr" value="Tool Registry" style="shape=mxgraph.gcp2.cloud_run;fillColor=#1565c0;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="720" y="240" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="areg" value="Artifact Registry&#xa;(Image)" style="shape=mxgraph.gcp2.artifact_registry;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="50" y="260" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sm2" value="Secret Manager" style="shape=mxgraph.gcp2.secret_manager;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gH">
+          <mxGeometry x="240" y="260" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gTL" value="🛠️  Tool Layer — GCP Native APIs" style="swimlane;startSize=26;fillColor=#fff3e0;strokeColor=#e65100;fontColor=#bf360c;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="245" width="370" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="tI" value="IAM Analyzer&#xa;(Asset Inv.)" style="shape=mxgraph.gcp2.cloud_iam;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="30" y="40" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tD" value="DLP Scanner&#xa;(Cloud DLP)" style="shape=mxgraph.gcp2.cloud_dlp;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="210" y="40" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tC" value="Data Catalog&#xa;Tool" style="shape=mxgraph.gcp2.data_catalog;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="30" y="145" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tL" value="Data Lineage&#xa;Tool" style="shape=mxgraph.gcp2.data_lineage;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="210" y="145" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tP" value="Org Policy&#xa;(VPC-SC)" style="shape=mxgraph.gcp2.cloud_iam;fillColor=#880e4f;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="30" y="250" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tB" value="BigQuery Audit&#xa;(Info Schema)" style="shape=mxgraph.gcp2.bigquery;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="210" y="250" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tS" value="Security Command&#xa;Center" style="shape=mxgraph.gcp2.security_command_center;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="30" y="340" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="tK" value="Cloud KMS&#xa;(CMEK check)" style="shape=mxgraph.gcp2.cloud_key_management_service;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gTL">
+          <mxGeometry x="210" y="340" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gS" value="📦  Fuentes de Datos GCP" style="swimlane;startSize=26;fillColor=#f3e5f5;strokeColor=#6a1b9a;fontColor=#4a148c;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1460" y="245" width="230" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="sB" value="BigQuery" style="shape=mxgraph.gcp2.bigquery;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gS">
+          <mxGeometry x="30" y="40" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sG" value="Cloud Storage" style="shape=mxgraph.gcp2.cloud_storage;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gS">
+          <mxGeometry x="130" y="40" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sSp" value="Cloud Spanner" style="shape=mxgraph.gcp2.cloud_spanner;fillColor=#34A853;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gS">
+          <mxGeometry x="30" y="145" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sC" value="Cloud SQL&#xa;/ AlloyDB" style="shape=mxgraph.gcp2.cloud_sql;fillColor=#34A853;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gS">
+          <mxGeometry x="130" y="145" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sLog" value="Audit Log Sink&#xa;→ BQ" style="shape=mxgraph.gcp2.cloud_logging;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gS">
+          <mxGeometry x="30" y="250" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gM" value="🗄️  Memoria Vectorial" style="swimlane;startSize=26;fillColor=#fff8e1;strokeColor=#f57f17;fontColor=#e65100;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="100" y="740" width="430" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mV" value="Vertex Vector&#xa;Search" style="shape=mxgraph.gcp2.vertex_ai;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gM">
+          <mxGeometry x="50" y="35" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="mE" value="Vertex AI&#xa;Embeddings" style="shape=mxgraph.gcp2.vertex_ai;fillColor=#0f9d58;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gM">
+          <mxGeometry x="260" y="35" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="gO" value="📤  Output Layer" style="swimlane;startSize=26;fillColor=#e0f2f1;strokeColor=#00695c;fontColor=#004d40;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="590" y="740" width="700" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="oG" value="Reportes&#xa;(Cloud Storage)" style="shape=mxgraph.gcp2.cloud_storage;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gO">
+          <mxGeometry x="20" y="35" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oBQ" value="Resultados&#xa;(BigQuery)" style="shape=mxgraph.gcp2.bigquery;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gO">
+          <mxGeometry x="155" y="35" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oP" value="Alertas&#xa;(Pub/Sub)" style="shape=mxgraph.gcp2.cloud_pub_sub;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gO">
+          <mxGeometry x="290" y="35" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oL" value="Dashboard&#xa;(Looker Studio)" style="shape=mxgraph.gcp2.looker;fillColor=#34A853;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gO">
+          <mxGeometry x="425" y="35" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="oM" value="Cloud Monitoring" style="shape=mxgraph.gcp2.cloud_monitoring;fillColor=#4285F4;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gO">
+          <mxGeometry x="560" y="35" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gSec" value="🔐  Seguridad" style="swimlane;startSize=26;fillColor=#fce4ec;strokeColor=#880e4f;fontColor=#560027;fontStyle=1;fontSize=10;rounded=1;arcSize=3;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="740" width="350" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="sSA" value="Service Account&#xa;(Min. Priv.)" style="shape=mxgraph.gcp2.cloud_iam;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gSec">
+          <mxGeometry x="30" y="35" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sSM" value="Secret Manager" style="shape=mxgraph.gcp2.secret_manager;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gSec">
+          <mxGeometry x="160" y="35" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="sVPC" value="VPC Service&#xa;Controls" style="shape=mxgraph.gcp2.vpc_service_controls;fillColor=#EA4335;strokeColor=none;align=center;verticalLabelPosition=bottom;verticalAlign=top;fontStyle=0;fontSize=9;" vertex="1" parent="gSec">
+          <mxGeometry x="270" y="35" width="55" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="e01" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="sc" target="pl" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e02" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ev" target="ex" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e03" value="HTTP" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ag" target="gH" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e04" value="plan" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="pl" target="ex" parent="gH">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e05" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="mm" parent="gH">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e06" value="state" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="st" parent="gH">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e07" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="tr" parent="gH">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e08" value="invoca tools" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="tr" target="gTL" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e09" value="consulta APIs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="gTL" target="gS" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" value="vectoriza" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="mm" target="mV" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" value="indexa" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="mE" target="mV" parent="gM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" value="resultados" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="oBQ" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e13" value="alertas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="oP" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" value="reportes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="ex" target="oG" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="oBQ" target="oL" parent="gO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="oP" target="oM" parent="gO">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" value="autentica" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="sSA" target="gH" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" value="inyecta secrets" style="edgeStyle=orthogonalEdgeStyle;dashed=1;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=8;" edge="1" source="sSM" target="sm2" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,62 @@
+substitutions:
+  _REGION: us-central1
+  _REPO: governance-bot
+
+timeout: 1200s
+
+steps:
+  # Paso 1: Correr tests
+  - name: python:3.12-slim
+    id: tests
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        pip install --no-cache-dir -r requirements.txt
+        if [ -d "tests/" ]; then
+          python -m pytest tests/ -v --tb=short
+        else
+          echo "No tests/ directory found, skipping tests."
+        fi
+
+  # Paso 2: Build imagen Docker
+  - name: gcr.io/cloud-builders/docker
+    id: build
+    args:
+      - build
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}:$COMMIT_SHA
+      - -t
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}:latest
+      - .
+    waitFor:
+      - tests
+
+  # Paso 3: Push a Artifact Registry
+  - name: gcr.io/cloud-builders/docker
+    id: push
+    args:
+      - push
+      - --all-tags
+      - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}
+    waitFor:
+      - build
+
+  # Paso 4: Deploy Cloud Run Job con la nueva imagen
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    id: deploy
+    entrypoint: gcloud
+    args:
+      - run
+      - jobs
+      - update
+      - governance-bot
+      - --image=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}:$COMMIT_SHA
+      - --region=${_REGION}
+      - --project=$PROJECT_ID
+    waitFor:
+      - push
+
+images:
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}:$COMMIT_SHA
+  - ${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_REPO}:latest
